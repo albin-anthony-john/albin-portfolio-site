@@ -32,10 +32,6 @@
         }
     }
 
-    .mobile_social_icons {
-        display: none;
-    }
-
     p {
         font-size: 1.5em;
         margin-block-start: 0px;
@@ -115,22 +111,6 @@
 
         .container {
             display: initial;
-        }
-
-        .social_icons {
-            display: none !important;
-        }
-
-        .mobile_social_icons {
-            padding-top: 10px;
-            display: flex !important;
-            flex-direction: row;
-            gap: 10px;
-            color: white;
-    
-            svg {
-                font-size: 1.8em;
-            }
         }
 
         .about-section {

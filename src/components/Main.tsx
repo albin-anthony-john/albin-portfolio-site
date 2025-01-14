@@ -5,8 +5,12 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import AlbinImg from '../assets/images/albinImg-bg.png';
 import "../assets/styles/Main.scss";
+import { useGlobalValues } from "../store/GlobalStateContext";
 
 function Main() {
+
+  const {globalValues} = useGlobalValues();
+
   return (
     <div className="container">
       <div className="about-section">
@@ -19,44 +23,27 @@ function Main() {
         <div className="content">
           <div className="social_icons">
             <a
-              href="https://github.com/yujisatojr"
+              href={globalValues.github}
               target="_blank"
               rel="noreferrer"
             >
               <GitHubIcon />
             </a>
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href={globalValues.linkedIn} target="_blank" rel="noreferrer">
               <LinkedInIcon />
             </a>
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href={globalValues.instagram} target="_blank" rel="noreferrer">
               <InstagramIcon />
             </a>
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href={globalValues.facebook} target="_blank" rel="noreferrer">
               <FacebookIcon />
             </a>
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href={globalValues.twitter} target="_blank" rel="noreferrer">
               <TwitterIcon />
             </a>
           </div>
           <h1>Albin Antony</h1>
           <p>Full Stack Engineer</p>
-
-          <div className="mobile_social_icons">
-            <a
-              href="https://github.com/yujisatojr"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GitHubIcon />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/yujisato/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <LinkedInIcon />
-            </a>
-          </div>
 
           <div
             style={{
