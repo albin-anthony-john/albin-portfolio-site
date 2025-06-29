@@ -18,9 +18,9 @@
     color: white;
   }
 
-  fieldset {
-    background-color: white;
-  }
+  // fieldset {
+  //   background-color: white;
+  // }
 }
 
 label {
@@ -45,4 +45,26 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+.contact-form .MuiOutlinedInput-root {
+  background-color: white;   // Set input background
+  color: black;               // Set input text color
+}
+
+.contact-form .MuiOutlinedInput-notchedOutline {
+  border-color: #ccc;         // Optional: style the outline border
+}
+
+.contact-form .MuiInputLabel-root {
+  color: #555;                // Label color
+}
+
+body.dark-mode .contact-form .MuiOutlinedInput-root {
+  background-color: #1e1e1e;  // Dark mode input background
+  color: white;               // Dark mode text color
+}
+
+body.dark-mode .contact-form .MuiInputLabel-root {
+  color: #aaa;                // Dark mode label
 }
