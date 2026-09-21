@@ -144,15 +144,6 @@ p, a, h1, h2, h3, h4, h5, label, button {
     background-image: url("./assets/images/bg-light.png");
   }
 
-  .skills-container svg {
-    color: #0d1116;
-  }
-
-  .chip {
-    background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  }
-
   .vertical-timeline::before {
     background-color: rgba(0, 0, 0, 0.08);
   }
@@ -167,10 +158,6 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   .vertical-timeline-element-content-arrow {
     border-right: 7px solid rgba(0, 0, 0, 0.08) !important;
-  }
-
-  .flex-chips .chip-title {
-    color: #0d1116;
   }
 }
 

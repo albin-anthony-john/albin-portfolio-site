@@ -1,85 +1,220 @@
 .skills-container {
-    padding: 5% 10%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-
-    svg {
-        color: white;
-    }
-}
-  
-.skills-container .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
-}
-  
-.skills-container .skills-grid .skill {
-    align-items: center;
-    text-align: left;
-}
-  
-.chip {
-    color: rgb(39, 40, 34) !important;
-    background-color: white !important;
-    font-size: 0.8rem !important;
-    height: 25px !important;
-  
-    span {
-        font-family: 'Courier Prime', monospace;
-        color: rgb(39, 40, 34);
-    }
-  
-    svg {
-        height: 15px !important;
-    }
+  padding: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
-.flex-chips {
-    line-height: 2;
-    margin: 0.5;
-
-    .chip-title {
-        color: white;
-        padding-right: 10px;
-    }
+.skills-header {
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
 }
 
-.flex-chips .MuiChip-root {
-    margin-right: 0.5em;
+.skills-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9b7dff;
+  font-family: "Lato", sans-serif;
 }
 
-.flex-chips .MuiChip-outlined {
-    background-color: #e0e0e0;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+.skills-lede {
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.flex-chips .MuiChip-outlined span {
-    color: rgb(39, 40, 34);
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
 }
 
-@media screen {
-    @media (max-width: 768px) {
-        .skills-container {
-            display: block;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-    
-        .skills-container .skills-grid {
-            display: initial;
-        }
-        
-        .skills-container .skills-grid .skill {
-            padding-bottom: 5%;
-        }
-    }
+.skill-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.6rem 1.5rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #5000ca;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
 
-    @media (max-width: 567px) {
-        .skills {
-            font-size: 12px;
-        }
-    }
+.skill-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(80, 0, 202, 0.45);
+  background: rgba(80, 0, 202, 0.08);
+}
+
+.skill-panel__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skill-panel__index {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: #9b7dff;
+}
+
+.skill-panel__icon {
+  color: #fff;
+  font-size: 1.55rem;
+}
+
+.skill-panel h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.skill-panel__summary {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.skill-panel__capabilities {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.skill-panel__capabilities li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.skill-panel__capabilities li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #9b7dff;
+}
+
+.skill-panel__stacks {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.stack-group__label {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Lato", sans-serif;
+}
+
+.stack-group__tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.28rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: #f3f4f6;
+}
+
+.light-mode {
+  .skills-eyebrow {
+    color: #5000ca;
+  }
+
+  .skills-lede {
+    color: rgba(13, 17, 22, 0.78);
+  }
+
+  .skill-panel {
+    border-color: rgba(13, 17, 22, 0.1);
+    background: rgba(13, 17, 22, 0.02);
+  }
+
+  .skill-panel:hover {
+    background: rgba(80, 0, 202, 0.05);
+    border-color: rgba(80, 0, 202, 0.35);
+  }
+
+  .skill-panel__icon {
+    color: #0d1116;
+  }
+
+  .skill-panel__index {
+    color: #5000ca;
+  }
+
+  .skill-panel__summary {
+    color: rgba(13, 17, 22, 0.82);
+  }
+
+  .skill-panel__capabilities li {
+    color: rgba(13, 17, 22, 0.8);
+  }
+
+  .skill-panel__capabilities li::before {
+    background: #5000ca;
+  }
+
+  .skill-panel__stacks {
+    border-top-color: rgba(13, 17, 22, 0.12);
+  }
+
+  .stack-group__label {
+    color: rgba(13, 17, 22, 0.62);
+  }
+
+  .skill-tag {
+    border-color: rgba(13, 17, 22, 0.16);
+    background: rgba(13, 17, 22, 0.06);
+    color: #0d1116;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .skill-panel {
+    padding: 1.35rem 1.15rem;
+  }
 }

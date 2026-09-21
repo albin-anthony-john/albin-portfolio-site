@@ -16,9 +16,9 @@ interface GlobalValuesContextType {
   
   // Define default global values
   const defaultGlobalValues: GlobalValues = {
-    github: "https://github.com/bsoft-albin",
-    linkedIn: "#",
-    instagram: "https://www.instagram.com/a.j_alvin/",
+    github: "https://github.com/albin-anthony-john",
+    linkedIn: "https://www.linkedin.com/in/albin-antony-784092410",
+    instagram: "https://www.instagram.com/de.anthony.albin",
     twitter : "https://x.com/albin_anthony24",
     facebook : "https://www.facebook.com/profile.php?id=100079775847839"
   };
