@@ -52,39 +52,16 @@ The page will reload if you make edits, and you will see any lint errors in the 
 
 If you are interested in creating a mockup image like the ones from the personal projects section, I recommend [Genmoo](https://gemoo.com/tools/browser-mockup-generator/). This website lets you generate sleek looking browser mockups for free.
 
-## Deployment
+## Deployment (Cloudflare Workers / Pages)
 
-You can choose your preferred service (e.g., [Netlify](https://www.netlify.com/), [Render](https://render.com/), [Heroku](https://www.heroku.com/)) for deployment. One of the easiest ways to host this portfolio is using GitHub Pages. Follow the instructions below for a production deploy.
+Build output folder is `build` (not `dist`).
 
-1. **Set Up GitHub Repository**
+1. Set production SEO values in committed `.env.production`, or as Cloudflare environment variables:
+   - `VITE_SITE_URL`
+   - `VITE_SITE_NAME`
+   - `VITE_SITE_TITLE`
+   - `VITE_SITE_DESCRIPTION`
+2. In Cloudflare, use build command `npm run build` and output directory `build`.
+3. Do **not** use a Netlify-style `public/_redirects` SPA rule — `wrangler.jsonc` already enables SPA fallback via `not_found_handling: "single-page-application"`.
 
-    Create a new repository on GitHub for your portfolio app.
-
-2. **Configure `package.json`**
-
-    Edit the following properties in your `package.json` file:
-
-    ```json
-    {
-        "homepage": "https://yourusername.github.io/your-repo-name",
-        "scripts": {
-            "predeploy": "npm run build",
-            "deploy": "gh-pages -d build",
-            ...
-        }
-    }
-    ```
-
-    Replace `yourusername` with your GitHub username and `your-repo-name` with the name of your GitHub repository.
-
-3. **Deploy to GitHub Pages**
-
-    Run the following command to deploy your app:
-
-    ```bash
-    npm run deploy
-    ```
-
-4. **Access Your Deployed App**
-
-    After successfully deploying, you can access your app at `https://yourusername.github.io/your-repo-name`.
+You can also host on [Netlify](https://www.netlify.com/) or [Render](https://render.com/). Point the publish directory to `build`.
