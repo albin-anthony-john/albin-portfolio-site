@@ -18,15 +18,19 @@ View the [Demo](https://yujisatojr.github.io/react-portfolio-template/).
 ✅ Responsive design & mobile-friendly  
 ✅ Supports both dark and light modes  
 ✅ Highly customizable multi-component layout  
-✅ Built with modern technologies (React, TypeScript, JavaScript, and SCSS)  
+✅ Built with modern technologies (React, TypeScript, Vite, and SCSS)  
+✅ Targets Node.js 24 LTS  
+✅ SEO-ready SPA (meta tags, Open Graph, JSON-LD, sitemap, semantic HTML)  
 
 ## Quick Setup
 
-1. Ensure you have [Node.js](https://nodejs.org/) installed. Check your installation by running:
+1. Use **Node.js 24 LTS** (Active LTS). Check with:
 
     ```bash
     node -v
     ```
+
+    If you use nvm, this repo includes an `.nvmrc` pinned to `24`.
 
 2. In the project directory, install dependencies:
 

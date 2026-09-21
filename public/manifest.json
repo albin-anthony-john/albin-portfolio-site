@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Albin Antony",
+  "name": "Albin Antony | Full Stack Engineer",
+  "description": "Portfolio of Albin Antony, Full Stack Engineer specializing in .NET, React, TypeScript, DevOps, and Avalonia.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,11 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0d1116",
+  "background_color": "#0d1116",
+  "lang": "en",
+  "categories": ["portfolio", "personalization", "productivity"]
 }

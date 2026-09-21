@@ -3,6 +3,13 @@ footer {
     padding-top: 50px;
     padding-bottom: 50px;
 
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
     svg {
         width: 1.1em !important;
         height: 1.1em !important;

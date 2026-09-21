@@ -1,8 +1,6 @@
-import "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faDesktop } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faDesktop } from "@fortawesome/free-solid-svg-icons";
 import Chip from "@mui/material/Chip";
 import "../assets/styles/Expertise.scss";
 
@@ -49,12 +47,12 @@ const labelsThird = [
 
 function Expertise() {
   return (
-    <div className="container" id="expertise">
+    <section className="container" id="expertise" aria-labelledby="expertise-heading">
       <div className="skills-container">
-        <h1>Expertise</h1>
+        <h2 id="expertise-heading">Expertise</h2>
         <div className="skills-grid">
-          <div className="skill">
-            <FontAwesomeIcon icon={faCode} size="3x" />
+          <article className="skill">
+            <FontAwesomeIcon icon={faCode} size="3x" aria-hidden="true" />
             <h3>Full Stack Web Development</h3>
             <p>
               I have built a diverse Array of web Applications from Scratch
@@ -68,10 +66,10 @@ function Expertise() {
                 <Chip key={index} className="chip" label={label} />
               ))}
             </div>
-          </div>
+          </article>
 
-          <div className="skill">
-            <FontAwesomeIcon icon={faGithub} size="3x" />
+          <article className="skill">
+            <FontAwesomeIcon icon={faGithub} size="3x" aria-hidden="true" />
             <h3>DevOps & Automation</h3>
             <p>
               Once the application is built, I help clients set up DevOps
@@ -84,10 +82,10 @@ function Expertise() {
                 <Chip key={index} className="chip" label={label} />
               ))}
             </div>
-          </div>
+          </article>
 
-          <div className="skill">
-            <FontAwesomeIcon icon={faDesktop} size="3x" />
+          <article className="skill">
+            <FontAwesomeIcon icon={faDesktop} size="3x" aria-hidden="true" />
             <h3>Cross Platform Desktop Development</h3>
             <p>
               Skilled Cross-Platform Desktop Developer specializing in creating
@@ -101,10 +99,10 @@ function Expertise() {
                 <Chip key={index} className="chip" label={label} />
               ))}
             </div>
-          </div>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

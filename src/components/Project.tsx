@@ -1,10 +1,3 @@
-import React from "react";
-import mock01 from "../assets/images/mock01.png";
-import mock02 from "../assets/images/mock02.png";
-import mock03 from "../assets/images/mock03.png";
-import mock04 from "../assets/images/mock04.png";
-import mock05 from "../assets/images/mock05.png";
-import mock06 from "../assets/images/mock06.png";
 import mock07 from "../assets/images/mock07.png";
 import mock08 from "../assets/images/mock08.png";
 import mock09 from "../assets/images/mock09.png";
@@ -13,85 +6,125 @@ import "../assets/styles/Project.scss";
 
 function Project() {
   return (
-    <div className="projects-container" id="projects">
-      <h1>Personal Projects</h1>
+    <section
+      className="projects-container"
+      id="projects"
+      aria-labelledby="projects-heading"
+    >
+      <h2 id="projects-heading">Personal Projects</h2>
       <div className="projects-grid">
-        <div className="project">
-          <a href="https://www.filmate.club/" target="_blank" rel="noreferrer">
-            <img src={mock10} className="zoom" alt="thumbnail" width="100%" />
+        <article className="project">
+          <a
+            href="https://www.filmate.club/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={mock10}
+              className="zoom"
+              alt="Filmate AI movie finder app screenshot"
+              width="100%"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
-          <a href="https://www.filmate.club/" target="_blank" rel="noreferrer">
-            <h2>Filmate AI</h2>
+          <a
+            href="https://www.filmate.club/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>Filmate AI</h3>
           </a>
           <p>
             Developed movie finder app with semantic search and sentiment
             analysis using OpenAI GPT-3.5 Turbo, Qdrant, React, and Flask.
           </p>
-        </div>
-        <div className="project">
+        </article>
+        <article className="project">
           <a
             href="https://yujisatojr.itch.io/highspeedchase"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <img src={mock09} className="zoom" alt="thumbnail" width="100%" />
+            <img
+              src={mock09}
+              className="zoom"
+              alt="High Speed Chase 3D racing game screenshot"
+              width="100%"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
           <a
             href="https://yujisatojr.itch.io/highspeedchase"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <h2>High Speed Chase</h2>
+            <h3>High Speed Chase</h3>
           </a>
           <p>
             Designed, developed, and launched a 3D multiplayer racing game with
             C# and Unity. This is available on Itch.io for gamers worldwide to
             enjoy.
           </p>
-        </div>
-        <div className="project">
+        </article>
+        <article className="project">
           <a
             href="https://yujisatojr.itch.io/spacecraft"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <img src={mock08} className="zoom" alt="thumbnail" width="100%" />
+            <img
+              src={mock08}
+              className="zoom"
+              alt="Astro Raiders 2D shooting game screenshot"
+              width="100%"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
           <a
             href="https://yujisatojr.itch.io/spacecraft"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <h2>Astro Raiders</h2>
+            <h3>Astro Raiders</h3>
           </a>
           <p>
             Developed and released a 2D shooting game with C# and Unity. This
             project is hosted on the Itch.io public marketplace.
           </p>
-        </div>
-        <div className="project">
+        </article>
+        <article className="project">
           <a
             href="https://www.datumlearn.com/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <img src={mock07} className="zoom" alt="thumbnail" width="100%" />
+            <img
+              src={mock07}
+              className="zoom"
+              alt="Datum integrated learning platform screenshot"
+              width="100%"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
           <a
             href="https://www.datumlearn.com/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            <h2>Datum: Integrated Learning Platform</h2>
+            <h3>Datum: Integrated Learning Platform</h3>
           </a>
           <p>
             This is an online educational platform that provides high-quality,
             data science-focused learning resources in the Japanese language. I
             created the entire platform from scratch using Ruby on Rails.
           </p>
-        </div>
+        </article>
       </div>
-    </div>
+    </section>
   );
 }
 

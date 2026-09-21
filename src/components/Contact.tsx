@@ -53,10 +53,10 @@ function Contact() {
 };
 
   return (
-    <div id="contact">
+    <section id="contact" aria-labelledby="contact-heading">
       <div className="items-container">
         <div className="contact_wrapper">
-          <h1>Contact Me</h1>
+          <h2 id="contact-heading">Contact Me</h2>
           <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
           <Box
             ref={form}
@@ -104,7 +104,7 @@ function Contact() {
           </Box>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

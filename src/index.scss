@@ -8,6 +8,34 @@ body {
   font-size: 1.1rem !important;
 }
 
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 2000;
+  padding: 8px 14px;
+  background: #5000ca;
+  color: #fff;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.95rem;
+  transition: top 0.15s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 16px;
+  color: #fff;
+}
+
+main section > .skills-container > h2,
+main section > .items-container > h2,
+main section.projects-container > h2,
+main section > .items-container .contact_wrapper > h2 {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
   font-size: 1rem !important;

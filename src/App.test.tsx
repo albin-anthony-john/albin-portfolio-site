@@ -1,9 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { GlobalValuesProvider } from "./store/GlobalStateContext";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders portfolio name", () => {
+  render(
+    <GlobalValuesProvider>
+      <App />
+    </GlobalValuesProvider>
+  );
+  expect(
+    screen.getByRole("heading", { name: /Albin Antony/i })
+  ).toBeInTheDocument();
 });
