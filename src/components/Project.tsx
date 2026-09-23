@@ -2,10 +2,10 @@ import "../assets/styles/Project.scss";
 
 function Project() {
 
-  const filmateAiImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/filmate-ai.png";
-  const highSpeedChaseImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/high-speed-chase.png";
-  const astroRaidersImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/astro-raiders.png";
-  const datumImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/datum.png";
+  const cipherVaultImg = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/cipher-vault.png";
+  const migrationStudioImg = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/migration-studio.png";
+  const olympusBackendImg = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/olympus-backend.png";
+  const openObjectStorageImg = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/open-object-storage.png";
 
   return (
     <section
@@ -17,112 +17,106 @@ function Project() {
       <div className="projects-grid">
         <article className="project">
           <a
-            href={filmateAiImage}
+            href={cipherVaultImg}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={filmateAiImage}
+              src={cipherVaultImg}
               className="zoom"
-              alt="Filmate AI movie finder app screenshot"
+              alt="Cipher Vault screenshot"
               width="100%"
               loading="lazy"
               decoding="async"
             />
           </a>
           <a
-            href={filmateAiImage}
+            href={migrationStudioImg}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3>Filmate AI</h3>
+            <h3>Cipher Vault</h3>
           </a>
           <p>
-            Developed movie finder app with semantic search and sentiment
-            analysis using OpenAI GPT-3.5 Turbo, Qdrant, React, and Flask.
+            Developed a secure vault for storing sensitive data with AES-256 encryption and secure key management.
           </p>
         </article>
         <article className="project">
           <a
-            href={highSpeedChaseImage}
+            href={migrationStudioImg}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={highSpeedChaseImage}
+              src={migrationStudioImg}
               className="zoom"
-              alt="High Speed Chase 3D racing game screenshot"
+              alt="Migration Studio screenshot"
               width="100%"
               loading="lazy"
               decoding="async"
             />
           </a>
           <a
-            href={highSpeedChaseImage}
+            href={migrationStudioImg}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3>High Speed Chase</h3>
+            <h3>Migration Studio</h3>
           </a>
           <p>
-            Designed, developed, and launched a 3D multiplayer racing game with
-            C# and Unity. This is available on Itch.io for gamers worldwide to
-            enjoy.
+            Developed a migration studio for migrating data from one database to another with a user-friendly interface.
           </p>
         </article>
         <article className="project">
           <a
-            href={astroRaidersImage}
+            href={olympusBackendImg}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={astroRaidersImage}
+              src={olympusBackendImg}
               className="zoom"
-              alt="Astro Raiders 2D shooting game screenshot"
+              alt="Olympus Backend screenshot"
               width="100%"
               loading="lazy"
               decoding="async"
             />
           </a>
           <a
-            href={astroRaidersImage}
+            href={olympusBackendImg}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3>Astro Raiders</h3>
+            <h3>Olympus Backend</h3>
           </a>
           <p>
-            Developed and released a 2D shooting game with C# and Unity. This
-            project is hosted on the Itch.io public marketplace.
+            Developed a backend for the Olympus project with a focus on scalability and performance.
           </p>
         </article>
         <article className="project">
           <a
-            href={datumImage}
+            href={openObjectStorageImg}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={datumImage}
+              src={openObjectStorageImg}
               className="zoom"
-              alt="Datum integrated learning platform screenshot"
+              alt="Open Object Storage screenshot"
               width="100%"
               loading="lazy"
               decoding="async"
             />
           </a>
           <a
-            href={datumImage}
+            href={openObjectStorageImg}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3>Datum: Integrated Learning Platform</h3>
+            <h3>Open Object Storage</h3>
           </a>
           <p>
-            This is an online educational platform that provides high-quality,
-            data science-focused learning resources in the Japanese language. I
-            created the entire platform from scratch using Ruby on Rails.
+            Developed an open object storage for storing and retrieving objects with a focus on scalability and performance.
           </p>
         </article>
       </div>
