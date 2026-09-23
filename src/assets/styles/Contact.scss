@@ -9,19 +9,23 @@
 
   button {
     float: right;
-    background-color: white;
-    color: #050f0b;
   }
 
-  button:hover {
-    background-color: #5000ca;
-    color: white;
+  .MuiFormHelperText-root {
+    min-height: 1.25em;
   }
-}
 
-label {
-  font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
+  .MuiFormHelperText-root.Mui-error {
+    color: #d32f2f;
+  }
+
+  .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+    border-color: #d32f2f;
+  }
+
+  .MuiInputLabel-root.Mui-error {
+    color: #d32f2f;
+  }
 }
 
 .form-flex {
@@ -43,24 +47,150 @@ form {
   margin-bottom: 15px !important;
 }
 
-.contact-form .MuiOutlinedInput-root {
-  background-color: white;   // Set input background
-  color: black;               // Set input text color
+/* Light theme — dark text on light fields */
+.light-mode .contact-form {
+  .MuiOutlinedInput-root {
+    background-color: #ffffff !important;
+    color: #0d1116 !important;
+  }
+
+  .MuiOutlinedInput-input {
+    color: #0d1116 !important;
+    -webkit-text-fill-color: #0d1116 !important;
+    caret-color: #0d1116;
+  }
+
+  .MuiOutlinedInput-input::placeholder {
+    color: rgba(13, 17, 22, 0.45);
+    opacity: 1;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(13, 17, 22, 0.25);
+  }
+
+  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(13, 17, 22, 0.45);
+  }
+
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #5000ca;
+  }
+
+  .MuiInputLabel-root {
+    color: rgba(13, 17, 22, 0.7) !important;
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: #5000ca !important;
+  }
+
+  /* Browser autofill override */
+  .MuiOutlinedInput-input:-webkit-autofill,
+  .MuiOutlinedInput-input:-webkit-autofill:hover,
+  .MuiOutlinedInput-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #0d1116 !important;
+    caret-color: #0d1116;
+    box-shadow: 0 0 0 1000px #ffffff inset !important;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  button.MuiButton-contained {
+    background-color: #0d1116 !important;
+    color: #ffffff !important;
+  }
+
+  button.MuiButton-contained:hover:not(:disabled) {
+    background-color: #5000ca !important;
+    color: #ffffff !important;
+  }
+
+  button.MuiButton-contained:disabled {
+    background-color: rgba(13, 17, 22, 0.12) !important;
+    color: rgba(13, 17, 22, 0.38) !important;
+    cursor: not-allowed;
+  }
 }
 
-.contact-form .MuiOutlinedInput-notchedOutline {
-  border-color: #ccc;         // Optional: style the outline border
+/* Dark theme — light text on dark fields */
+.dark-mode .contact-form {
+  .MuiOutlinedInput-root {
+    background-color: #1a1f26 !important;
+    color: #f3f4f6 !important;
+  }
+
+  .MuiOutlinedInput-input {
+    color: #f3f4f6 !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+    caret-color: #f3f4f6;
+  }
+
+  .MuiOutlinedInput-input::placeholder {
+    color: rgba(243, 244, 246, 0.45);
+    opacity: 1;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #9b7dff;
+  }
+
+  .MuiInputLabel-root {
+    color: rgba(243, 244, 246, 0.7) !important;
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: #9b7dff !important;
+  }
+
+  .MuiFormHelperText-root.Mui-error {
+    color: #ff8a80;
+  }
+
+  .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+    border-color: #ff8a80;
+  }
+
+  .MuiInputLabel-root.Mui-error {
+    color: #ff8a80;
+  }
+
+  /* Browser autofill override */
+  .MuiOutlinedInput-input:-webkit-autofill,
+  .MuiOutlinedInput-input:-webkit-autofill:hover,
+  .MuiOutlinedInput-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #f3f4f6 !important;
+    caret-color: #f3f4f6;
+    box-shadow: 0 0 0 1000px #1a1f26 inset !important;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  button.MuiButton-contained {
+    background-color: #ffffff !important;
+    color: #0d1116 !important;
+  }
+
+  button.MuiButton-contained:hover:not(:disabled) {
+    background-color: #5000ca !important;
+    color: #ffffff !important;
+  }
+
+  button.MuiButton-contained:disabled {
+    background-color: rgba(255, 255, 255, 0.14) !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    cursor: not-allowed;
+  }
 }
 
-.contact-form .MuiInputLabel-root {
-  color: #555;                // Label color
-}
-
-body.dark-mode .contact-form .MuiOutlinedInput-root {
-  background-color: #1e1e1e;  // Dark mode input background
-  color: white;               // Dark mode text color
-}
-
-body.dark-mode .contact-form .MuiInputLabel-root {
-  color: #aaa;                // Dark mode label
+@media screen and (max-width: 700px) {
+  .form-flex {
+    flex-direction: column;
+  }
 }
