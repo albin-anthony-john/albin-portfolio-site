@@ -1,10 +1,12 @@
-import mock07 from "../assets/images/mock07.png";
-import mock08 from "../assets/images/mock08.png";
-import mock09 from "../assets/images/mock09.png";
-import mock10 from "../assets/images/mock10.png";
 import "../assets/styles/Project.scss";
 
 function Project() {
+
+  const filmateAiImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/filmate-ai.png";
+  const highSpeedChaseImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/high-speed-chase.png";
+  const astroRaidersImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/astro-raiders.png";
+  const datumImage = "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/datum.png";
+
   return (
     <section
       className="projects-container"
@@ -15,12 +17,12 @@ function Project() {
       <div className="projects-grid">
         <article className="project">
           <a
-            href="https://www.filmate.club/"
+            href={filmateAiImage}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={mock10}
+              src={filmateAiImage}
               className="zoom"
               alt="Filmate AI movie finder app screenshot"
               width="100%"
@@ -29,7 +31,7 @@ function Project() {
             />
           </a>
           <a
-            href="https://www.filmate.club/"
+            href={filmateAiImage}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -42,12 +44,12 @@ function Project() {
         </article>
         <article className="project">
           <a
-            href="https://yujisatojr.itch.io/highspeedchase"
+            href={highSpeedChaseImage}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={mock09}
+              src={highSpeedChaseImage}
               className="zoom"
               alt="High Speed Chase 3D racing game screenshot"
               width="100%"
@@ -56,7 +58,7 @@ function Project() {
             />
           </a>
           <a
-            href="https://yujisatojr.itch.io/highspeedchase"
+            href={highSpeedChaseImage}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -70,12 +72,12 @@ function Project() {
         </article>
         <article className="project">
           <a
-            href="https://yujisatojr.itch.io/spacecraft"
+            href={astroRaidersImage}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={mock08}
+              src={astroRaidersImage}
               className="zoom"
               alt="Astro Raiders 2D shooting game screenshot"
               width="100%"
@@ -84,7 +86,7 @@ function Project() {
             />
           </a>
           <a
-            href="https://yujisatojr.itch.io/spacecraft"
+            href={astroRaidersImage}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -97,12 +99,12 @@ function Project() {
         </article>
         <article className="project">
           <a
-            href="https://www.datumlearn.com/"
+            href={datumImage}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={mock07}
+              src={datumImage}
               className="zoom"
               alt="Datum integrated learning platform screenshot"
               width="100%"
@@ -111,7 +113,7 @@ function Project() {
             />
           </a>
           <a
-            href="https://www.datumlearn.com/"
+            href={datumImage}
             target="_blank"
             rel="noopener noreferrer"
           >
