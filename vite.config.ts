@@ -5,8 +5,31 @@ import { loadEnv } from "vite";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
+/**
+ * Sync VITE_* from .env files into process.env when not already set
+ * (e.g. by Cloudflare). No hardcoded secrets or site values in this file.
+ * Priority: process.env (Cloudflare / CI) > .env / .env.[mode]
+ */
+function syncViteEnv(mode: string) {
+  const fileEnv = loadEnv(mode, process.cwd(), "VITE_");
+
+  for (const [key, value] of Object.entries(fileEnv)) {
+    if (!process.env[key] || process.env[key]?.trim() === "") {
+      process.env[key] = value;
+    }
+  }
+
+  return {
+    ...fileEnv,
+    VITE_SITE_URL: process.env.VITE_SITE_URL || fileEnv.VITE_SITE_URL || "",
+  };
+}
+
 function seoStaticFilesPlugin(siteUrl: string) {
   const normalized = siteUrl.replace(/\/$/, "");
+  if (!normalized) {
+    return { name: "seo-static-files" };
+  }
 
   const writeSeoFiles = (outDir: string) => {
     writeFileSync(
@@ -38,11 +61,10 @@ function seoStaticFilesPlugin(siteUrl: string) {
 }
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
-  const siteUrl = env.VITE_SITE_URL || "https://albinantony.dev";
+  const env = syncViteEnv(mode);
 
   return {
-    plugins: [react(), seoStaticFilesPlugin(siteUrl)],
+    plugins: [react(), seoStaticFilesPlugin(env.VITE_SITE_URL)],
     server: {
       port: 3000,
       open: true,

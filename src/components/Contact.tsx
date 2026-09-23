@@ -44,13 +44,29 @@ function Contact() {
 
     setIsSending(true);
 
-    emailjs.send("service_ts2eutd","template_fhpjmdq",{
-      from_name: name.trim(),
-      contact_info: email.trim(),
-      message: message.trim(),
-      title: "New Contact Form Submission - From Portfolio Website",
-      name: "Albin Antony",
-      }, "EQ8qHLJY7EEsJHnTV")
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_USER_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      alert("Contact form is not configured. Please try again later.");
+      setIsSending(false);
+      return;
+    }
+
+    emailjs
+      .send(
+        serviceId,
+        templateId,
+        {
+          from_name: name.trim(),
+          contact_info: email.trim(),
+          message: message.trim(),
+          title: "New Contact Form Submission - From Portfolio Website",
+          name: "Albin Antony",
+        },
+        publicKey
+      )
       .then(() => {
         alert("Message sent!");
         setName("");

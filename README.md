@@ -32,36 +32,42 @@ View the [Demo](https://yujisatojr.github.io/react-portfolio-template/).
 
     If you use nvm, this repo includes an `.nvmrc` pinned to `24`.
 
-2. In the project directory, install dependencies:
+2. Copy env example and fill local values:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+3. Install and start:
 
     ```bash
     npm install
-    ```
-
-3. Start the development server:
-
-    ```bash
     npm start
     ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
-
-5. Customize the template by navigating to the `/src/components` directory. Modify texts, pictures, and other information as needed.
-
-The page will reload if you make edits, and you will see any lint errors in the console.
-
-If you are interested in creating a mockup image like the ones from the personal projects section, I recommend [Genmoo](https://gemoo.com/tools/browser-mockup-generator/). This website lets you generate sleek looking browser mockups for free.
+4. Open [http://localhost:3000](http://localhost:3000).
 
 ## Deployment (Cloudflare Workers / Pages)
 
 Build output folder is `build` (not `dist`).
 
-1. Set production SEO values in committed `.env.production`, or as Cloudflare environment variables:
-   - `VITE_SITE_URL`
-   - `VITE_SITE_NAME`
-   - `VITE_SITE_TITLE`
-   - `VITE_SITE_DESCRIPTION`
-2. In Cloudflare, use build command `npm run build` and output directory `build`.
-3. Do **not** use a Netlify-style `public/_redirects` SPA rule — `wrangler.jsonc` already enables SPA fallback via `not_found_handling: "single-page-application"`.
+Because `.env` / `.env.production` are **not** committed to GitHub, set the same keys in Cloudflare:
 
-You can also host on [Netlify](https://www.netlify.com/) or [Render](https://render.com/). Point the publish directory to `build`.
+### Set environment variables in Cloudflare
+
+1. Open your project → **Settings** → **Variables and Secrets** (Workers)  
+   or **Settings** → **Environment variables** (Pages).
+2. Add these for **Production** (and Preview if you want):
+
+| Variable | Example |
+|----------|---------|
+| `VITE_SITE_URL` | `https://albinantony.dev` |
+| `VITE_SITE_NAME` | `Albin Antony` |
+| `VITE_SITE_TITLE` | `Albin Antony \| Full Stack Engineer` |
+| `VITE_SITE_DESCRIPTION` | Your SEO description |
+| `VITE_EMAILJS_USER_PUBLIC_KEY` | Your EmailJS public key (optional) |
+
+3. Mark them as **plain text** (not encrypted) if they are public SEO strings — Vite must see them at **build** time.
+4. **Redeploy** / retry the build after saving.
+
+> Important: `VITE_*` values are baked in during `npm run build`. Changing them in Cloudflare without rebuilding will not update the live HTML. There are **no hardcoded env defaults** in `vite.config.ts` — set every required variable in Cloudflare (or local `.env`).
