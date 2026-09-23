@@ -3,7 +3,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import AlbinImg from "../assets/images/albinImg-bg.png";
 import "../assets/styles/Main.scss";
 import { useGlobalValues } from "../store/GlobalStateContext";
 
@@ -15,7 +14,7 @@ function Main() {
       <div className="about-section">
         <div className="image-wrapper">
           <img
-            src={AlbinImg}
+            src={"https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/albin-mylook.png"}
             alt="Portrait of Albin Antony, Full Stack Engineer"
             width={280}
             height={280}
