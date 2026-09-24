@@ -4,6 +4,54 @@
     padding: 5% 10%;
     text-align: left;
 }
+
+.projects-header {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.projects-lede {
+    width: 100%;
+    margin: 0.75rem 0 0;
+    white-space: nowrap;
+    opacity: 0.88;
+}
+
+.project-problem {
+    opacity: 0.88;
+}
+
+.project-problem {
+    margin-bottom: 0.6rem;
+    font-style: italic;
+}
+
+.project-stack {
+    margin: 0.85rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.22rem 0.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.1);
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 0.75rem;
+    color: #f3f4f6;
+}
+
+.light-mode {
+    .project-tag {
+        border-color: rgba(13, 17, 22, 0.16);
+        background: rgba(13, 17, 22, 0.06);
+        color: #0d1116;
+    }
+}
   
 .projects-container .projects-grid {
     display: grid;
@@ -44,6 +92,10 @@
       
         .projects-container .projects-grid .project {
             padding-bottom: 5%;
+        }
+
+        .projects-lede {
+            white-space: normal;
         }
     }
 }

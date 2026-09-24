@@ -27,25 +27,25 @@ const domains: ExpertiseDomain[] = [
     title: "Full-Stack Product Engineering",
     icon: faCode,
     summary:
-      "I design and ship complete web products—APIs, data models, and interfaces—so features move from backlog to production as one coherent system.",
+      "I don't ship isolated screens. I own the path from React UI to .NET API to the database, so a feature is one system — not three handoffs.",
     capabilities: [
-      "Own the full path from UI interaction to database write",
-      "Build React frontends with typed contracts against .NET backends",
-      "Shape schemas and queries that stay fast as data grows",
-      "Translate product goals into maintainable SDLC deliverables",
+      "Design APIs, schemas, and UI contracts together so front and back stay aligned",
+      "Build React TypeScript clients against .NET services with explicit REST, SignalR, and webhook flows",
+      "Model SQL and document data so queries stay predictable as volume grows",
+      "Take a product idea through design, implementation, and production without dropping ownership",
     ],
     stacks: [
       {
         label: "Frontend",
-        items: ["React", "JQuery", "TypeScript", "JavaScript", "HTML5", "CSS3", "SCSS", "Tailwind", "Bootstrap"],
+        items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "SCSS", "Tailwind", "Bootstrap"],
       },
       {
         label: "Backend",
-        items: [".NET 10", "C#", "REST APIs", "Postman", "Microservices", "WebSocket", "Webhooks", "SignalR", "Kafka", "OpenTelemetry", "Prometheus", "Grafana", "Docker", "Kubernetes", "Nginx", "IIS"],
+        items: [".NET 10", "C#", "REST APIs", "Microservices", "SignalR", "Webhooks", "Redis", "WebSocket", "Kafka"],
       },
       {
-        label: "Data",
-        items: ["SQL Server", "PostgreSQL", "MySQL", "MongoDB"],
+        label: "Data & runtime",
+        items: ["SQL Server", "PostgreSQL", "MySQL", "MongoDB", "Docker", "Nginx", "IIS"],
       },
     ],
   },
@@ -54,21 +54,21 @@ const domains: ExpertiseDomain[] = [
     title: "DevOps & Delivery Automation",
     icon: faScrewdriverWrench,
     summary:
-      "Shipping is unfinished until release is repeatable. I wire the pipeline so every merge can be built, verified, and promoted with confidence.",
+      "A feature is unfinished until another engineer can ship it safely. I turn releases into a pipeline, not a ritual.",
     capabilities: [
-      "Automate build, test, and deploy with GitHub Actions",
-      "Cut release friction with CI/CD that teams actually trust",
-      "Keep environments consistent from staging through go-live",
-      "Track work clearly across engineering and delivery with Jira",
+      "Automate build, test, and deploy with GitHub Actions so merges can go live the same day",
+      "Separate secrets and environment config from source so staging and production stay consistent",
+      "Instrument services with OpenTelemetry, Prometheus, and Grafana so failures are visible before users report them",
+      "Run delivery in Jira with a clear path from ticket to production, not status theater",
     ],
     stacks: [
       {
         label: "Pipeline",
-        items: ["Git", "GitHub Actions", "CI/CD", "Git CLI"],
+        items: ["Git", "GitHub Actions", "CI/CD", "Docker", "Kubernetes"],
       },
       {
-        label: "Delivery",
-        items: ["Release automation", "User Secrets", "Environment Variables", "Jira", "Agile", "Scrum", "Kanban", "DevOps", "Continuous Integration", "Continuous Delivery", "Continuous Deployment"],
+        label: "Operations",
+        items: ["OpenTelemetry", "Prometheus", "Grafana", "User Secrets", "Environment Variables", "Postman"],
       },
     ],
   },
@@ -77,12 +77,12 @@ const domains: ExpertiseDomain[] = [
     title: "Cloud Native & AI Engineering",
     icon: faCloud,
     summary:
-      "I build cloud-ready services and AI-assisted product features—semantic search, model APIs, and automation that turns raw data into useful answers.",
+      "I treat cloud and AI as product infrastructure: deployable services, retrieval over your data, and automation that removes manual work.",
     capabilities: [
-      "Design services that deploy cleanly on modern cloud platforms",
-      "Integrate LLM APIs into real product workflows, not demos",
-      "Build retrieval and semantic-search paths for grounded answers",
-      "Combine automation with AI to reduce manual operational load",
+      "Package services for Docker and Kubernetes so the same build runs locally and in the cloud",
+      "Put LLM APIs behind real product flows — search, drafting, and ops helpers — not standalone chat demos",
+      "Ground answers with RAG and vector search so the model uses your data, not guesswork",
+      "Expose tools to agents through MCP when a workflow needs the model to act, not only reply",
     ],
     stacks: [
       {
@@ -91,11 +91,11 @@ const domains: ExpertiseDomain[] = [
       },
       {
         label: "AI",
-        items: ["OpenAI APIs", "Prompt design", "MCP", "LLM APIs", "RAG Pipelines", "Vector Databases", "Vector search"],
+        items: ["OpenAI APIs", "LLM APIs", "Prompt design", "RAG Pipelines", "Vector Databases", "MCP"],
       },
       {
         label: "Runtime",
-        items: ["Python/FastAPI services", "Node services", "Observability basics"],
+        items: ["Python/FastAPI", "Node services", "Observability"],
       },
     ],
   },
@@ -113,8 +113,9 @@ function Expertise() {
           <p className="skills-eyebrow">How I work</p>
           <h2 id="expertise-heading">Technical Expertise</h2>
           <p className="skills-lede">
-            Three practice areas I use to take systems from idea to production—
-            product engineering, reliable delivery, and cloud-native AI features.
+            Most developers deliver tickets. I deliver systems — products,
+            pipelines, and AI-backed services that other people can run after I
+            step away.
           </p>
         </header>
 
