@@ -144,6 +144,15 @@ p, a, h1, h2, h3, h4, h5, label, button {
     background-image: url("https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/images/bg-light-new.png");
   }
 
+  .about-section .hero-tagline {
+    color: #0d1116;
+  }
+
+  .about-section .image-wrapper {
+    background: #f3f0fa;
+    border-color: rgba(13, 17, 22, 0.18);
+  }
+
   .vertical-timeline::before {
     background-color: rgba(0, 0, 0, 0.08);
   }
