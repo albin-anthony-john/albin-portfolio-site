@@ -6,14 +6,27 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 
+const FIELD_LIMITS = {
+  name: 100,
+  email: 100,
+  subject: 100,
+  message: 500,
+} as const;
+
+function clampLength(value: string, max: number) {
+  return value.length <= max ? value : value.slice(0, max);
+}
+
 function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
 
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [subjectError, setSubjectError] = useState(false);
   const [messageError, setMessageError] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
@@ -21,18 +34,30 @@ function Contact() {
   const isFormComplete =
     name.trim().length > 0 &&
     email.trim().length > 0 &&
+    subject.trim().length > 0 &&
     message.trim().length > 0;
 
   const validateFields = () => {
-    const nextNameError = name.trim().length === 0;
-    const nextEmailError = email.trim().length === 0;
-    const nextMessageError = message.trim().length === 0;
+    const nextNameError =
+      name.trim().length === 0 || name.length > FIELD_LIMITS.name;
+    const nextEmailError =
+      email.trim().length === 0 || email.length > FIELD_LIMITS.email;
+    const nextSubjectError =
+      subject.trim().length === 0 || subject.length > FIELD_LIMITS.subject;
+    const nextMessageError =
+      message.trim().length === 0 || message.length > FIELD_LIMITS.message;
 
     setNameError(nextNameError);
     setEmailError(nextEmailError);
+    setSubjectError(nextSubjectError);
     setMessageError(nextMessageError);
 
-    return !(nextNameError || nextEmailError || nextMessageError);
+    return !(
+      nextNameError ||
+      nextEmailError ||
+      nextSubjectError ||
+      nextMessageError
+    );
   };
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,7 +87,7 @@ function Contact() {
           from_name: name.trim(),
           contact_info: email.trim(),
           message: message.trim(),
-          title: "New Contact Form Submission - From Portfolio Website",
+          title: subject.trim(),
           name: "Albin Antony",
         },
         publicKey
@@ -71,9 +96,11 @@ function Contact() {
         alert("Message sent!");
         setName("");
         setEmail("");
+        setSubject("");
         setMessage("");
         setNameError(false);
         setEmailError(false);
+        setSubjectError(false);
         setMessageError(false);
       })
       .catch(() => {
@@ -107,8 +134,9 @@ function Contact() {
                 label="Your Name"
                 placeholder="What's your name?"
                 value={name}
+                inputProps={{ maxLength: FIELD_LIMITS.name }}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setName(clampLength(e.target.value, FIELD_LIMITS.name));
                   if (nameError && e.target.value.trim()) {
                     setNameError(false);
                   }
@@ -119,15 +147,20 @@ function Contact() {
                   }
                 }}
                 error={nameError}
-                helperText={nameError ? "Please enter your name" : " "}
+                helperText={
+                  nameError
+                    ? "Please enter your name"
+                    : `${name.length}/${FIELD_LIMITS.name}`
+                }
               />
               <TextField
                 required
                 label="Email / Phone"
                 placeholder="How can I reach you?"
                 value={email}
+                inputProps={{ maxLength: FIELD_LIMITS.email }}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setEmail(clampLength(e.target.value, FIELD_LIMITS.email));
                   if (emailError && e.target.value.trim()) {
                     setEmailError(false);
                   }
@@ -139,10 +172,37 @@ function Contact() {
                 }}
                 error={emailError}
                 helperText={
-                  emailError ? "Please enter your email or phone number" : " "
+                  emailError
+                    ? "Please enter your email or phone number"
+                    : `${email.length}/${FIELD_LIMITS.email}`
                 }
               />
             </div>
+            <TextField
+              required
+              label="Subject"
+              placeholder="What is this about?"
+              className="body-form"
+              value={subject}
+              inputProps={{ maxLength: FIELD_LIMITS.subject }}
+              onChange={(e) => {
+                setSubject(clampLength(e.target.value, FIELD_LIMITS.subject));
+                if (subjectError && e.target.value.trim()) {
+                  setSubjectError(false);
+                }
+              }}
+              onBlur={() => {
+                if (!subject.trim()) {
+                  setSubjectError(true);
+                }
+              }}
+              error={subjectError}
+              helperText={
+                subjectError
+                  ? "Please enter a subject"
+                  : `${subject.length}/${FIELD_LIMITS.subject}`
+              }
+            />
             <TextField
               required
               label="Message"
@@ -151,8 +211,9 @@ function Contact() {
               rows={10}
               className="body-form"
               value={message}
+              inputProps={{ maxLength: FIELD_LIMITS.message }}
               onChange={(e) => {
-                setMessage(e.target.value);
+                setMessage(clampLength(e.target.value, FIELD_LIMITS.message));
                 if (messageError && e.target.value.trim()) {
                   setMessageError(false);
                 }
@@ -163,7 +224,11 @@ function Contact() {
                 }
               }}
               error={messageError}
-              helperText={messageError ? "Please enter the message" : " "}
+              helperText={
+                messageError
+                  ? "Please enter the message"
+                  : `${message.length}/${FIELD_LIMITS.message}`
+              }
             />
             <Button
               type="submit"
