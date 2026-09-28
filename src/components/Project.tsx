@@ -40,13 +40,40 @@ const projects: ProjectItem[] = [
     stack: [".NET", "Ecommerce APIs", "Microservices", "High-performance SQL"],
   },
   {
+    title: "Educacion Pro",
+    image: `${CDN}/educacion_pro.png`,
+    problem:
+      "A multi-tenant school management system built specifically for Indian schools, bringing academics, administration, fees, attendance, communication, and daily operations into one platform.",
+    outcome:
+      "Educacion Pro provides a complete digital platform for managing multiple schools from a single system, with multilingual support, role-based access, academic and examination management, fee collection, transport, library, staff management, communication, reports, and more. The focus is simple UX, high performance, and practical support for the way Indian schools actually operate.",
+    stack: [".NET", "React", "Multi-tenant", "Multilingual", "School Management"],
+  },
+  {
     title: "Open Object Storage",
     image: `${CDN}/open-storage-object.png`,
     problem:
-      "An Amazon S3–inspired object store for any file type — images, backups, documents, and blobs — at scale.",
+      "An S3-inspired object storage platform for storing and managing files of any type — from documents and images to backups and large-scale application data.",
     outcome:
-      "Open Object Storage gives you bucket-style upload, fetch, and organization without locking you to one cloud vendor. It is built to hold large volumes of objects and serve them through a simple API, the way S3 does, so apps can treat files as infrastructure instead of local folders.",
-    stack: [".NET", "S3-style API", "Object storage", "Scalable I/O"],
+      "Open Object Storage provides bucket-based storage with public and private access, scalable object management, secure policies, and high-performance file I/O. It gives applications an S3-style storage layer without depending entirely on a single cloud provider, making objects available through simple APIs while keeping storage scalable and organized.",
+    stack: [".NET", "S3-style API", "Object Storage", "Scalable I/O", "Access Policies"],
+  },
+  {
+    title: "Albin.Export",
+    image: `${CDN}/albin-export.png`,
+    problem:
+      "A reusable, fully customizable open-source .NET export library for generating high-quality reports, analytics, receipts, invoices, and business documents.",
+    outcome:
+      "Albin.Export provides a unified export architecture for PDF, Excel, CSV, Word, ZIP, PNG, SVG, and HTML. It is built around extensible interfaces, configurable properties, templates, styling, layouts, charts, and export-specific options, allowing developers to generate professional documents and reports without building a separate export implementation for every project.",
+    stack: [".NET", "NuGet", "Open Source", "Custom Exporters", "Reports & Analytics"],
+  },
+  {
+    title: "Unity Chat",
+    image: `${CDN}/unity-chat-app.png`,
+    problem:
+      "A lightweight, high-speed team communication platform designed for direct conversations and low-to-medium sized group chats without the complexity of a large enterprise collaboration suite.",
+    outcome:
+      "Unity Chat delivers real-time messaging for individuals and teams with group conversations, file sharing, reactions, notifications, presence, and voice/video communication. The platform focuses on fast communication, a simple user experience, and efficient real-time infrastructure for teams that need a focused alternative to heavier collaboration platforms.",
+    stack: [".NET", "React", "SignalR", "Real-time Chat", "WebSockets"],
   },
 ];
 
