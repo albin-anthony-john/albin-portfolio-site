@@ -41,7 +41,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "Open Object Storage",
-    image: `${CDN}/open-object-storage.png`,
+    image: `${CDN}/open-storage-object.png`,
     problem:
       "An Amazon S3–inspired object store for any file type — images, backups, documents, and blobs — at scale.",
     outcome:
