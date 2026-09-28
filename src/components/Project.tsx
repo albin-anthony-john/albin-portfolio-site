@@ -41,7 +41,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "Educacion Pro",
-    image: `${CDN}/educacion_pro.png`,
+    image: `${CDN}/educacion-app.png`,
     problem:
       "A multi-tenant school management system built specifically for Indian schools, bringing academics, administration, fees, attendance, communication, and daily operations into one platform.",
     outcome:
