@@ -75,6 +75,15 @@ const projects: ProjectItem[] = [
       "Unity Chat delivers real-time messaging for individuals and teams with group conversations, file sharing, reactions, notifications, presence, and voice/video communication. The platform focuses on fast communication, a simple user experience, and efficient real-time infrastructure for teams that need a focused alternative to heavier collaboration platforms.",
     stack: [".NET", "React", "SignalR", "Real-time Chat", "WebSockets"],
   },
+  {
+    title: "Ticket Management System",
+    image: `${CDN}/ticket-management-system.png`,
+    problem:
+      "A multi-tenant project and ticket management platform inspired by tools like Jira, allowing organizations to manage multiple projects, teams, and work items from one central system.",
+    outcome:
+      "The platform lets organizations register and manage their workspace, create unlimited projects, and organize work through project-specific Kanban boards. Teams can create, assign, prioritize, track, and complete tickets with statuses, labels, sprints, collaboration, and project-level visibility — providing a focused and lightweight alternative for structured software and business workflows.",
+    stack: [".NET", "React", "Multi-tenant", "Kanban", "Ticket Management"],
+  }
 ];
 
 function Project() {
