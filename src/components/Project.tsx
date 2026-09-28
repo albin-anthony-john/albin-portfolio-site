@@ -14,7 +14,7 @@ type ProjectItem = {
 const projects: ProjectItem[] = [
   {
     title: "Cipher Vault",
-    image: `${CDN}/cipher-vault.png`,
+    image: `${CDN}/cipher-vault-web.png`,
     problem:
       "A Bitwarden-style central password manager — one vault for logins, secrets, and sensitive notes.",
     outcome:
