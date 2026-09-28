@@ -60,7 +60,7 @@ function Project() {
       <header className="projects-header">
         <h2 id="projects-heading">Systems I built</h2>
         <p className="projects-lede">
-          Four systems I designed and built: a password vault, an RDBMS
+          Seven systems and One Custom Nuget Package I designed and built: a password vault, an RDBMS
           migration studio, an ecommerce backend, and S3-style object storage.
         </p>
       </header>
