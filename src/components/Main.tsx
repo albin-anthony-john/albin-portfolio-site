@@ -3,6 +3,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/X";
+import EmailIcon from "@mui/icons-material/Email";
 import "../assets/styles/Main.scss";
 import { useGlobalValues } from "../store/GlobalStateContext";
 
@@ -63,9 +64,18 @@ function Main() {
             >
               <TwitterIcon aria-hidden="true" />
             </a>
+            <a
+              href={`mailto:${globalValues.email}`}
+              aria-label={`Email Albin Antony at ${globalValues.email}`}
+            >
+              <EmailIcon aria-hidden="true" />
+            </a>
           </nav>
           <h1 id="hero-heading">Albin Antony</h1>
           <p>Full Stack Engineer</p>
+          <a className="hero-email" href={`mailto:${globalValues.email}`}>
+            {globalValues.email}
+          </a>
           <p className="hero-tagline">
             Coding is about solving real world problems.
           </p>

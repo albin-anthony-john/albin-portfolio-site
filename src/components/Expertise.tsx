@@ -112,7 +112,7 @@ function Expertise() {
         <header className="skills-header">
           <p className="skills-eyebrow">How I work</p>
           <h2 id="expertise-heading">Technical Expertise</h2>
-          <p className="skills-lede">
+          <p className="history-lede">
             Most developers deliver tickets. I deliver systems — products,
             pipelines, and AI-backed services that other people can run after I
             step away.

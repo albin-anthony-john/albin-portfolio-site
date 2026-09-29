@@ -7,6 +7,7 @@ interface GlobalValues {
   instagram: string;
   facebook: string;
   twitter: string;
+  email: string;
 }
 
 interface GlobalValuesContextType {
@@ -20,7 +21,8 @@ interface GlobalValuesContextType {
     linkedIn: "https://www.linkedin.com/in/albin-antony-784092410",
     instagram: "https://www.instagram.com/de.anthony.albin",
     twitter : "https://x.com/albin_anthony24",
-    facebook : "https://www.facebook.com/profile.php?id=100079775847839"
+    facebook : "https://www.facebook.com/profile.php?id=100079775847839",
+    email: "albinanthony.tech@gmail.com",
   };
   
   // Create the context

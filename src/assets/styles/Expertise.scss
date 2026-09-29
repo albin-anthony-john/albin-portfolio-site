@@ -19,13 +19,6 @@
   font-family: "Lato", sans-serif;
 }
 
-.skills-lede {
-  margin: 0.75rem 0 0;
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.88);
-}
-
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -150,10 +143,6 @@
 .light-mode {
   .skills-eyebrow {
     color: #5000ca;
-  }
-
-  .skills-lede {
-    color: rgba(13, 17, 22, 0.78);
   }
 
   .skill-panel {

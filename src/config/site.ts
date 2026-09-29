@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     (import.meta.env.VITE_SITE_DESCRIPTION as string | undefined) ||
     "Portfolio of Albin Antony, Full Stack Engineer specializing in .NET, React, TypeScript, DevOps, and Avalonia desktop apps.",
-  email: "albinantony@dbcyelagiri.edu.in",
+  email: "albinanthony.tech@gmail.com",
   jobTitle: "Full Stack Engineer",
   locale: "en_IN",
   imagePath: "/og-image.png",

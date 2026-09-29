@@ -28,7 +28,7 @@ const projects: ProjectItem[] = [
       "A high-speed, performance-first tool for moving database objects — same engine or cross-database, RDBMS only.",
     outcome:
       "Migration Studio copies tables, views, procedures, and related objects from one relational database to another. It is built for one-to-one and cross-DB moves (for example SQL Server to PostgreSQL or MySQL), not NoSQL. The goal is simple: keep the business running while the schema and data land complete, fast, and without a one-off script.",
-    stack: [".NET", "RDBMS", "Cross-database migration", "SQL objects"],
+    stack: [".NET", "Blazor", "RDBMS", "Cross-database migration", "SQL objects"],
   },
   {
     title: "Olympus Backend",
@@ -37,7 +37,7 @@ const projects: ProjectItem[] = [
       "A complete Amazon-style ecommerce backend, designed from the first request for raw speed, scale, and security.",
     outcome:
       "Olympus is the server side of a high-volume store: catalog, cart, checkout, and order flows behind APIs that stay fast under load. The design follows the same hard rules used at Amazon, Netflix, Uber, Google, Microsoft, and GitHub — clear service boundaries, performance-first data access, and security as a default, not a later patch.",
-    stack: [".NET", "Ecommerce APIs", "Microservices", "High-performance SQL"],
+    stack: [".NET", "Ecommerce APIs", "Microservices", "Docker", "Kubernetes", "Kafka", "Hangfire", "High-performance SQL", "Valkey", "GitHub Actions"],
   },
   {
     title: "Educacion Pro",

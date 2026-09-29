@@ -55,12 +55,12 @@ function Footer() {
       </nav>
       <p>
         © {new Date().getFullYear()}{" "}
-        <a href="mailto:albinantony@dbcyelagiri.edu.in">Albin Antony</a>. All
+        <a href="mailto:albinanthony.tech@gmail.com">Albin Antony</a>. All
         Rights Reserved.
       </p>
       <p>
         A Portfolio Designed & Built by{" "}
-        <a href="mailto:albinantony@dbcyelagiri.edu.in">Albin Antony</a>.
+        <a href="mailto:albinanthony.tech@gmail.com">Albin Antony</a>.
       </p>
     </footer>
   );
