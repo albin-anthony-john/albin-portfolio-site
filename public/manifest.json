@@ -1,22 +1,12 @@
 {
-  "short_name": "Albin Antony",
+  "short_name": "Albin Antony - Portfolio",
   "name": "Albin Antony | Full Stack Engineer",
-  "description": "Portfolio of Albin Antony, Full Stack Engineer specializing in .NET, React, TypeScript, DevOps, and Avalonia.",
+  "description": "Portfolio of Albin Antony, Full Stack Engineer specializing in .NET, React, TypeScript, DevOps, Docker, Kubernetes, Kafka, Hangfire, PostgreSQL, High-performance SQL, Valkey, GitHub Actions and Linux.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-portfolio/icons/favicon.ico",
+      "sizes": "96x96 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": "/",

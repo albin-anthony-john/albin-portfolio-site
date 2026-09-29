@@ -3,6 +3,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/X";
+import EmailIcon from "@mui/icons-material/Email";
 import "../assets/styles/Footer.scss";
 import { useGlobalValues } from "../store/GlobalStateContext";
 
@@ -52,15 +53,21 @@ function Footer() {
         >
           <TwitterIcon aria-hidden="true" />
         </a>
+        <a
+              href={`mailto:${globalValues.email}`}
+              aria-label={`Email Albin Antony at ${globalValues.email}`}
+            >
+              <EmailIcon aria-hidden="true" />
+            </a>
       </nav>
       <p>
         © {new Date().getFullYear()}{" "}
-        <a href="mailto:albinanthony.tech@gmail.com">Albin Antony</a>. All
+        <a href={`mailto: ${globalValues.email}`}>Albin Antony</a>. All
         Rights Reserved.
       </p>
       <p>
         A Portfolio Designed & Built by{" "}
-        <a href="mailto:albinanthony.tech@gmail.com">Albin Antony</a>.
+        <a href={`mailto: ${globalValues.email}`}>Albin Antony</a>.
       </p>
     </footer>
   );
