@@ -1,0 +1,17 @@
+// Site footer (components/Footer.tsx): centred social links and credit lines.
+.site-footer {
+  padding-block: 50px;
+  text-align: center;
+
+  .social-links {
+    justify-content: center;
+  }
+
+  svg {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+}

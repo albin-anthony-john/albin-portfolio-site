@@ -45,6 +45,20 @@ This simple portfolio template is designed to showcase your past projects, caree
 
 4. Open [http://localhost:3000](http://localhost:3000).
 
+Other scripts: `npm run build`, `npm run lint`, `npm run preview`.
+
+## Customizing content
+
+Edit data, not components — every page, the SEO tags, JSON-LD, `manifest.json` and the `<noscript>` fallback update from these files:
+
+| File | Contains |
+|------|----------|
+| `src/config/portfolio.ts` | Name, job title, email, tagline, portrait, location, social links, nav sections, SEO specialties |
+| `src/data/expertise.ts` | Expertise panels and tech stacks |
+| `src/data/experience.ts` | Career history timeline |
+| `src/data/projects.ts` | Project cards |
+| `src/theme/palette.ts` | Dark / light colours (feeds both MUI and SCSS) |
+
 ## Deployment (Cloudflare Workers / Pages)
 
 Build output folder is `build` (not `dist`).
@@ -59,13 +73,12 @@ Because `.env` / `.env.production` are **not** committed to GitHub, set the same
 
 | Variable | Example |
 |----------|---------|
-| `VITE_SITE_URL` | `https://albinantony.dev` |
-| `VITE_SITE_NAME` | `Albin Antony` |
-| `VITE_SITE_TITLE` | `Albin Antony \| Full Stack Engineer` |
-| `VITE_SITE_DESCRIPTION` | Your SEO description |
-| `VITE_EMAILJS_USER_PUBLIC_KEY` | Your EmailJS public key (optional) |
+| `VITE_SITE_URL` | `https://albinantony.dev` (canonical URL, og:url, robots.txt, sitemap.xml) |
+| `VITE_EMAILJS_USER_PUBLIC_KEY` | Your EmailJS public key (contact form) |
+| `VITE_EMAILJS_SERVICE_ID` | Your EmailJS service ID |
+| `VITE_EMAILJS_TEMPLATE_ID` | Your EmailJS template ID |
 
-3. Mark them as **plain text** (not encrypted) if they are public SEO strings — Vite must see them at **build** time.
+3. Mark them as **plain text** (not encrypted) — they are public values and Vite must see them at **build** time.
 4. **Redeploy** / retry the build after saving.
 
-> Important: `VITE_*` values are baked in during `npm run build`. Changing them in Cloudflare without rebuilding will not update the live HTML. There are **no hardcoded env defaults** in `vite.config.ts` — set every required variable in Cloudflare (or local `.env`).
+> Important: `VITE_*` values are baked in during `npm run build`. Changing them in Cloudflare without rebuilding will not update the live site. Site name, title and description are **not** env variables — they come from `src/config/portfolio.ts`. Without `VITE_SITE_URL` the build still works but omits the canonical/og:url tags and the sitemap.

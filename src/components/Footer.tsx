@@ -1,76 +1,23 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/X";
-import EmailIcon from "@mui/icons-material/Email";
-import "../assets/styles/Footer.scss";
-import { useGlobalValues } from "../store/GlobalStateContext";
+/**
+ * Site footer: social links, copyright line (current year) and credit.
+ */
+import { person } from "../config/portfolio";
+import "../styles/footer.scss";
+import SocialLinks from "./SocialLinks";
 
-function Footer() {
-  const { globalValues } = useGlobalValues();
+/** Page footer. Name and email come from `person` in src/config/portfolio.ts. */
+export default function Footer() {
+  const mailto = `mailto:${person.email}`;
 
   return (
-    <footer role="contentinfo">
-      <nav aria-label="Footer social profiles">
-        <a
-          href={globalValues.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Albin Antony on GitHub"
-        >
-          <GitHubIcon aria-hidden="true" />
-        </a>
-        <a
-          href={globalValues.linkedIn}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Albin Antony on LinkedIn"
-        >
-          <LinkedInIcon aria-hidden="true" />
-        </a>
-        <a
-          href={globalValues.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Albin Antony on Instagram"
-        >
-          <InstagramIcon aria-hidden="true" />
-        </a>
-        <a
-          href={globalValues.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Albin Antony on Facebook"
-        >
-          <FacebookIcon aria-hidden="true" />
-        </a>
-        <a
-          href={globalValues.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Albin Antony on X"
-        >
-          <TwitterIcon aria-hidden="true" />
-        </a>
-        <a
-              href={`mailto:${globalValues.email}`}
-              aria-label={`Email Albin Antony at ${globalValues.email}`}
-            >
-              <EmailIcon aria-hidden="true" />
-            </a>
-      </nav>
+    <footer className="site-footer">
+      <SocialLinks />
       <p>
-        © {new Date().getFullYear()}{" "}
-        <a href={`mailto: ${globalValues.email}`}>Albin Antony</a>. All
-        Rights Reserved.
+        © {new Date().getFullYear()} <a href={mailto}>{person.name}</a>. All Rights Reserved.
       </p>
       <p>
-        A Portfolio Designed & Built by{" "}
-        <a href={`mailto: ${globalValues.email}`}>Albin Antony</a>.
+        A Portfolio Designed & Built by <a href={mailto}>{person.name}</a>.
       </p>
     </footer>
   );
 }
-
-export default Footer;

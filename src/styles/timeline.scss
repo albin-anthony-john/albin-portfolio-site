@@ -1,0 +1,25 @@
+// Refinements to react-vertical-timeline-component's stylesheet.
+// The library switches to its two-column layout at 1170px.
+@use "tokens" as *;
+
+$card-text: rgb(39, 40, 34);
+
+.vertical-timeline-element-content {
+  // The card is always white, so its text is always dark.
+  color: $card-text;
+  box-shadow: var(--pf-timeline-shadow);
+}
+
+.vertical-timeline-element-icon {
+  background: var(--pf-brand);
+  color: #fff;
+}
+
+.vertical-timeline-element-date {
+  font-family: $font-mono;
+
+  // Two-column layout: the date sits beside the card, on the page background.
+  @media (min-width: 1170px) {
+    color: rgb(var(--pf-ink));
+  }
+}

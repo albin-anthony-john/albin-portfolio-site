@@ -1,248 +1,185 @@
-import React, { useRef, useState } from "react";
-import "../assets/styles/Contact.scss";
-import emailjs from "emailjs-com";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+/**
+ * Contact section: a validated form that sends a message through EmailJS
+ * (see src/services/contact.ts) and shows the result inline.
+ */
+import { useState, type FormEvent } from "react";
 import SendIcon from "@mui/icons-material/Send";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { sections } from "../config/portfolio";
+import { sendContactMessage, type SendResult } from "../services/contact";
+import "../styles/contact.scss";
+import Section from "./Section";
 
-const FIELD_LIMITS = {
-  name: 100,
-  email: 100,
-  subject: 100,
-  message: 500,
-} as const;
+/** Keys of the form fields; also the keys of the form state. */
+type FieldName = "name" | "contact" | "subject" | "message";
 
-function clampLength(value: string, max: number) {
-  return value.length <= max ? value : value.slice(0, max);
+/** Current text of every field. */
+type FormValues = Record<FieldName, string>;
+
+/** Describes one form field; the form is rendered from a list of these. */
+interface FieldConfig {
+  name: FieldName;
+  label: string;
+  placeholder: string;
+  /** Maximum characters; also shown as the "n/max" counter. */
+  maxLength: number;
+  /** Message shown when the field is left empty. */
+  errorText: string;
+  /** Spans both columns on wide screens. */
+  fullWidth?: boolean;
+  /** When set, the field is a multi-line textarea with this many rows. */
+  rows?: number;
 }
 
-function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+/** The form's fields, in display order. Every field is required. */
+const FIELDS: readonly FieldConfig[] = [
+  {
+    name: "name",
+    label: "Your Name",
+    placeholder: "What's your name?",
+    maxLength: 100,
+    errorText: "Please enter your name",
+  },
+  {
+    name: "contact",
+    label: "Email / Phone",
+    placeholder: "How can I reach you?",
+    maxLength: 100,
+    errorText: "Please enter your email or phone number",
+  },
+  {
+    name: "subject",
+    label: "Subject",
+    placeholder: "What is this about?",
+    maxLength: 100,
+    errorText: "Please enter a subject",
+    fullWidth: true,
+  },
+  {
+    name: "message",
+    label: "Message",
+    placeholder: "Send me any inquiries or questions",
+    maxLength: 500,
+    errorText: "Please enter the message",
+    fullWidth: true,
+    rows: 10,
+  },
+];
+
+/** Initial form state, also used to reset the form after a successful send. */
+const EMPTY_VALUES: FormValues = { name: "", contact: "", subject: "", message: "" };
+
+/** Alert shown to the user for each possible send result. */
+const RESULT_MESSAGES: Record<SendResult, { severity: "success" | "error"; text: string }> = {
+  sent: { severity: "success", text: "Message sent!" },
+  failed: { severity: "error", text: "Failed to send message. Try again." },
+  "not-configured": {
+    severity: "error",
+    text: "Contact form is not configured. Please try again later.",
+  },
+};
+
+/** True when the value is empty or whitespace only. */
+const isBlank = (value: string) => value.trim().length === 0;
+
+/**
+ * Contact form section. A field shows its error after it loses focus while
+ * empty; the Send button stays disabled until every field has a value.
+ */
+export default function Contact() {
+  const [values, setValues] = useState<FormValues>(EMPTY_VALUES);
+  const [errors, setErrors] = useState<Partial<Record<FieldName, boolean>>>({});
   const [isSending, setIsSending] = useState(false);
+  const [result, setResult] = useState<SendResult | null>(null);
 
-  const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [subjectError, setSubjectError] = useState(false);
-  const [messageError, setMessageError] = useState(false);
+  const isComplete = FIELDS.every(({ name }) => !isBlank(values[name]));
 
-  const form = useRef<HTMLFormElement>(null);
-
-  const isFormComplete =
-    name.trim().length > 0 &&
-    email.trim().length > 0 &&
-    subject.trim().length > 0 &&
-    message.trim().length > 0;
-
-  const validateFields = () => {
-    const nextNameError =
-      name.trim().length === 0 || name.length > FIELD_LIMITS.name;
-    const nextEmailError =
-      email.trim().length === 0 || email.length > FIELD_LIMITS.email;
-    const nextSubjectError =
-      subject.trim().length === 0 || subject.length > FIELD_LIMITS.subject;
-    const nextMessageError =
-      message.trim().length === 0 || message.length > FIELD_LIMITS.message;
-
-    setNameError(nextNameError);
-    setEmailError(nextEmailError);
-    setSubjectError(nextSubjectError);
-    setMessageError(nextMessageError);
-
-    return !(
-      nextNameError ||
-      nextEmailError ||
-      nextSubjectError ||
-      nextMessageError
-    );
-  };
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!validateFields()) {
+  /** Sends the trimmed values; clears the form only if the send succeeded. */
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!isComplete || isSending) {
       return;
     }
 
     setIsSending(true);
-
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_USER_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      alert("Contact form is not configured. Please try again later.");
-      setIsSending(false);
-      return;
+    setResult(null);
+    const outcome = await sendContactMessage({
+      fromName: values.name.trim(),
+      contactInfo: values.contact.trim(),
+      subject: values.subject.trim(),
+      message: values.message.trim(),
+    });
+    setIsSending(false);
+    setResult(outcome);
+    if (outcome === "sent") {
+      setValues(EMPTY_VALUES);
+      setErrors({});
     }
-
-    emailjs
-      .send(
-        serviceId,
-        templateId,
-        {
-          from_name: name.trim(),
-          contact_info: email.trim(),
-          message: message.trim(),
-          title: subject.trim(),
-          name: "Albin Antony",
-        },
-        publicKey
-      )
-      .then(() => {
-        alert("Message sent!");
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-        setNameError(false);
-        setEmailError(false);
-        setSubjectError(false);
-        setMessageError(false);
-      })
-      .catch(() => {
-        alert("Failed to send message. Try again.");
-      })
-      .finally(() => {
-        setIsSending(false);
-      });
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-heading">
-      <div className="items-container">
-        <div className="contact_wrapper">
-          <h2 id="contact-heading">Contact Me</h2>
-          <p>
-            Got a project waiting to be realized? Let's collaborate and make it
-            happen!
-          </p>
-          <Box
-            ref={form}
-            component="form"
-            noValidate
-            autoComplete="off"
-            className="contact-form"
-            onSubmit={sendEmail}
+    <Section
+      id={sections.contact.id}
+      title="Contact Me"
+      lede="Got a project waiting to be realized? Let's collaborate and make it happen!"
+    >
+      <form className="contact-form" noValidate autoComplete="off" onSubmit={handleSubmit}>
+        {FIELDS.map(({ name, label, placeholder, maxLength, errorText, fullWidth, rows }) => {
+          const value = values[name];
+          const hasError = Boolean(errors[name]);
+          return (
+            <TextField
+              key={name}
+              name={name}
+              required
+              label={label}
+              placeholder={placeholder}
+              className={fullWidth ? "contact-form__full" : undefined}
+              multiline={rows !== undefined}
+              rows={rows}
+              value={value}
+              inputProps={{ maxLength }}
+              onChange={(event) => {
+                const next = event.target.value.slice(0, maxLength);
+                setValues((prev) => ({ ...prev, [name]: next }));
+                if (hasError && !isBlank(next)) {
+                  setErrors((prev) => ({ ...prev, [name]: false }));
+                }
+              }}
+              onBlur={() => {
+                if (isBlank(value)) {
+                  setErrors((prev) => ({ ...prev, [name]: true }));
+                }
+              }}
+              error={hasError}
+              helperText={hasError ? errorText : `${value.length}/${maxLength}`}
+            />
+          );
+        })}
+
+        {result && (
+          <Alert
+            className="contact-form__full"
+            severity={RESULT_MESSAGES[result].severity}
+            role={result === "sent" ? "status" : "alert"}
+            onClose={() => setResult(null)}
           >
-            <div className="form-flex">
-              <TextField
-                required
-                label="Your Name"
-                placeholder="What's your name?"
-                value={name}
-                inputProps={{ maxLength: FIELD_LIMITS.name }}
-                onChange={(e) => {
-                  setName(clampLength(e.target.value, FIELD_LIMITS.name));
-                  if (nameError && e.target.value.trim()) {
-                    setNameError(false);
-                  }
-                }}
-                onBlur={() => {
-                  if (!name.trim()) {
-                    setNameError(true);
-                  }
-                }}
-                error={nameError}
-                helperText={
-                  nameError
-                    ? "Please enter your name"
-                    : `${name.length}/${FIELD_LIMITS.name}`
-                }
-              />
-              <TextField
-                required
-                label="Email / Phone"
-                placeholder="How can I reach you?"
-                value={email}
-                inputProps={{ maxLength: FIELD_LIMITS.email }}
-                onChange={(e) => {
-                  setEmail(clampLength(e.target.value, FIELD_LIMITS.email));
-                  if (emailError && e.target.value.trim()) {
-                    setEmailError(false);
-                  }
-                }}
-                onBlur={() => {
-                  if (!email.trim()) {
-                    setEmailError(true);
-                  }
-                }}
-                error={emailError}
-                helperText={
-                  emailError
-                    ? "Please enter your email or phone number"
-                    : `${email.length}/${FIELD_LIMITS.email}`
-                }
-              />
-            </div>
-            <TextField
-              required
-              label="Subject"
-              placeholder="What is this about?"
-              className="body-form"
-              value={subject}
-              inputProps={{ maxLength: FIELD_LIMITS.subject }}
-              onChange={(e) => {
-                setSubject(clampLength(e.target.value, FIELD_LIMITS.subject));
-                if (subjectError && e.target.value.trim()) {
-                  setSubjectError(false);
-                }
-              }}
-              onBlur={() => {
-                if (!subject.trim()) {
-                  setSubjectError(true);
-                }
-              }}
-              error={subjectError}
-              helperText={
-                subjectError
-                  ? "Please enter a subject"
-                  : `${subject.length}/${FIELD_LIMITS.subject}`
-              }
-            />
-            <TextField
-              required
-              label="Message"
-              placeholder="Send me any inquiries or questions"
-              multiline
-              rows={10}
-              className="body-form"
-              value={message}
-              inputProps={{ maxLength: FIELD_LIMITS.message }}
-              onChange={(e) => {
-                setMessage(clampLength(e.target.value, FIELD_LIMITS.message));
-                if (messageError && e.target.value.trim()) {
-                  setMessageError(false);
-                }
-              }}
-              onBlur={() => {
-                if (!message.trim()) {
-                  setMessageError(true);
-                }
-              }}
-              error={messageError}
-              helperText={
-                messageError
-                  ? "Please enter the message"
-                  : `${message.length}/${FIELD_LIMITS.message}`
-              }
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              endIcon={<SendIcon />}
-              disabled={!isFormComplete || isSending}
-            >
-              {isSending ? "Sending..." : "Send"}
-            </Button>
-          </Box>
-        </div>
-      </div>
-    </section>
+            {RESULT_MESSAGES[result].text}
+          </Alert>
+        )}
+
+        <Button
+          className="contact-form__submit"
+          type="submit"
+          variant="contained"
+          endIcon={<SendIcon />}
+          disabled={!isComplete || isSending}
+        >
+          {isSending ? "Sending..." : "Send"}
+        </Button>
+      </form>
+    </Section>
   );
 }
-
-export default Contact;

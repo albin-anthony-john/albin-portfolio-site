@@ -1,0 +1,32 @@
+// Layout tokens and helpers shared by every stylesheet.
+// Colours are NOT defined here: they come from the MUI theme as CSS custom
+// properties (--pf-*), see src/theme/theme.ts, so both modes stay in sync.
+@use "sass:string";
+
+$bp-md: 768px;
+$bp-lg: 1100px;
+$toolbar-height: 64px;
+$content-max: 1536px;
+$font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+/// Current text colour at the given opacity (borders, tints, muted text).
+@function ink($alpha) {
+  @return string.unquote("rgb(var(--pf-ink) / #{$alpha})");
+}
+
+@mixin below($bp) {
+  @media (max-width: ($bp - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+/// Side padding of at least $min, growing so content never exceeds $content-max.
+@mixin gutter($min) {
+  padding-inline: max(#{$min}, calc((100% - #{$content-max}) / 2));
+}

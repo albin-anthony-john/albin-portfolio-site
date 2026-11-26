@@ -1,0 +1,22 @@
+// Field colours, focus and error states come from the MUI theme.
+@use "tokens" as *;
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding-top: 20px;
+
+  @include below($bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.contact-form__full {
+  grid-column: 1 / -1;
+}
+
+.contact-form__submit {
+  grid-column: 1 / -1;
+  justify-self: end;
+}

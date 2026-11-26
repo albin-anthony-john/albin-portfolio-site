@@ -1,53 +1,77 @@
-import React, { useState, useEffect } from "react";
+/**
+ * Root component: owns the colour mode, provides the MUI theme and lays out
+ * the page (skip link, navigation, content sections, footer).
+ */
+import { useCallback, useEffect, useMemo, useState } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 import {
-  Main,
-  Timeline,
-  Expertise,
-  Project,
   Contact,
-  Navigation,
+  Expertise,
+  FadeIn,
   Footer,
+  Hero,
+  Navigation,
+  Projects,
+  Timeline,
 } from "./components";
-import FadeIn from "./components/FadeIn";
-import "./index.scss";
+import type { ColorMode } from "./theme/palette";
+import { createAppTheme } from "./theme/theme";
 
-function App() {
-  const [mode, setMode] = useState<string>("dark");
+/** localStorage key that remembers the visitor's colour mode between visits. */
+const MODE_STORAGE_KEY = "color-mode";
 
-  const handleModeChange = () => {
-    if (mode === "dark") {
-      setMode("light");
-    } else {
-      setMode("dark");
-    }
-  };
+/**
+ * Reads the saved colour mode.
+ * @returns The stored mode, or `"dark"` when nothing is saved or storage is blocked.
+ */
+function readStoredMode(): ColorMode {
+  try {
+    return localStorage.getItem(MODE_STORAGE_KEY) === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
+/**
+ * The whole single-page portfolio. Changing the mode rebuilds the theme,
+ * which updates the `--pf-*` CSS variables used by the SCSS.
+ */
+export default function App() {
+  const [mode, setMode] = useState<ColorMode>(readStoredMode);
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
+  const toggleMode = useCallback(
+    () => setMode((current) => (current === "dark" ? "light" : "dark")),
+    []
+  );
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
+    try {
+      localStorage.setItem(MODE_STORAGE_KEY, mode);
+    } catch {
+      // Storage unavailable (private mode / blocked): the toggle still works for this visit.
+    }
+  }, [mode]);
 
   return (
-    <div
-      className={`main-container ${mode === "dark" ? "dark-mode" : "light-mode"}`}
-    >
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
       <header>
-        <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
+        <Navigation mode={mode} onToggleMode={toggleMode} />
       </header>
-      <main id="main-content">
-        <FadeIn transitionDuration={700}>
-          <Main />
+      <main id="main-content" tabIndex={-1}>
+        <FadeIn>
+          <Hero />
           <Expertise />
           <Timeline />
-          <Project />
+          <Projects />
           <Contact />
         </FadeIn>
       </main>
       <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
-
-export default App;
